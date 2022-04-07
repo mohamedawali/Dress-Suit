@@ -38,9 +38,9 @@ class Users {
     // print('stored'));
   }
 
-  Future getEmail() async {
-    return await firebaseAuth.currentUser!.email;
-  }
+  // Future getEmail() async {
+  //   return await firebaseAuth.currentUser!.email;
+  // }
 }
 // void saveUserData(UserData userData)async{
 //   // SharedPreferences sharedPreferences=await SharedPreferences.getInstance();

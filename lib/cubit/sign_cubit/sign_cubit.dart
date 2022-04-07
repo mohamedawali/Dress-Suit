@@ -11,40 +11,39 @@ part 'sign_state.dart';
 
 class SignCubit extends Cubit<SignState> {
   SignCubit() : super(SignInitial());
-  SignFire _signFire=SignFire();
-Repository repo=Repository();
-  Users _users=Users();
+  SignFire _signFire = SignFire();
+  Repository repo = Repository();
+  Users _users = Users();
 
-  void signUp(String email,String pass)async{
-
-   await repo.signUp(email,pass).then((value) => print('Success Register'));
-   // emit(IsSignedUp());
-
+  void signUp(String email, String pass) async {
+    await repo.signUp(email, pass).then((value) => print('Success Register'));
+    // emit(IsSignedUp());
   }
-  void signIn(String email,String pass)async{
+
+  void signIn(String email, String pass) async {
     //  emit(IsSignedUp());
-    _signFire.signIn(email,pass).then((value) => print('Success Login'));
-
-
+    _signFire.signIn(email, pass).then((value) => print('Success Login'));
   }
-void logOut(){
-    _signFire.logOut();
- // FirebaseAuth.instance.signOut();
-  //print('LogOut');
 
-}
+  void logOut() {
+    _signFire.logOut();
+    // FirebaseAuth.instance.signOut();
+    //print('LogOut');
+  }
+
+  Future viewUserData() async {
+    return await repo.viewUserData().then((data) => emit(getDataUser(data)));
+  }
+//   void getEmail() {
+// //     repo.getEmail().then((email) {
+// //       emit(Loademail(email));
+// //     });
+// //  }
+
 //  String getCurrentUser()  {
 // return _signFire.getCurrentUser();
 //
 //
 //   }
-  void getEmail() {
-    repo.getEmail().then((email) {
-      emit(Loademail(email));
-    });
- }
-  Future viewUserData()async{
-  return await  repo.viewUserData().then((data) => emit(getDataUser(data)));
-
-  }
+//
 }

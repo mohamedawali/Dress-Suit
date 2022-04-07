@@ -13,12 +13,12 @@ class UserInitial extends UserState {}
 //
 //
 // }
-class getImageUrl extends UserState{
-  var url;
-
-  getImageUrl(this.url);
-
-
-
-
-}
+// class getImageUrl extends UserState{
+//   var url;
+//
+//   getImageUrl(this.url);
+//
+//
+//
+//
+// }

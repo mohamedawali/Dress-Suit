@@ -1,13 +1,12 @@
 import 'package:dress_suit/View/addProduct.dart';
 import 'package:dress_suit/View/useProfil.dart';
 import 'package:dress_suit/cubit/sign_cubit/sign_cubit.dart';
-import 'package:dress_suit/cubit/user_cubit/user_cubit.dart';
-import 'package:dress_suit/repository/repository.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-import '../container.dart';
+
 import 'my_home.dart';
 
 class MainHome extends StatefulWidget {
