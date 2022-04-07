@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "69497733036",
+    "project_id": "suit-dress-4c474",
+    "storage_bucket": "suit-dress-4c474.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69497733036:android:1923443536f238c1744409",
+        "android_client_info": {
+          "package_name": "com.example.dress_suit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69497733036-orkfuslpku1lvk1b7dai7u54dpbdumvj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB26zseOVPbtlYYjRjZ4JCMnHZpaEw-7cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69497733036-orkfuslpku1lvk1b7dai7u54dpbdumvj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
