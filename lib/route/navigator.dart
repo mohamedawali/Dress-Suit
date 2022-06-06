@@ -24,7 +24,7 @@ import '../View/signup.dart';
 
 import '../cubit/sign_cubit/sign_cubit.dart';
 import '../repository/repository.dart';
-import '../others/test.dart';
+
 
 class AppNavigate {
 UserCubit userCubit=UserCubit();

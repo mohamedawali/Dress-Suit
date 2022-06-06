@@ -1,7 +1,5 @@
-import 'package:dress_suit/others/addProduct.dart';
 import 'package:dress_suit/View/add_product.dart';
 import 'package:dress_suit/View/myProduct.dart';
-import 'package:dress_suit/others/useProfil.dart';
 import 'package:dress_suit/View/drawer.dart';
 import 'package:dress_suit/cubit/sign_cubit/sign_cubit.dart';
 import 'package:dress_suit/cubit/user_cubit/user_cubit.dart';
