@@ -4,21 +4,21 @@ part of 'user_cubit.dart';
 abstract class UserState {}
 
 class UserInitial extends UserState {}
-// class Loademail extends UserState{
-//   var email;
-//
-//   Loademail(this.email);
-//
-//
-//
-//
-// }
-// class getImageUrl extends UserState{
-//   var url;
-//
-//   getImageUrl(this.url);
-//
-//
-//
-//
-// }
+class GetDataUser extends UserState {
+  UserData? userData;
+
+  GetDataUser(this.userData);
+
+
+}
+class GetUserProduct extends UserState{
+  List< ProductData> userProduct;
+  GetUserProduct(this.userProduct);
+  
+
+
+
+
+
+
+}

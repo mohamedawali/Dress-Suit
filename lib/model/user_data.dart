@@ -3,20 +3,28 @@ class UserData{
   String? name;
   String? phone;
   String? adress;
-  String? image;
+  String? email;
 
-  UserData(this.id,this.name, this.phone, this.adress, this.image);
+  UserData(this.name, this.email,this.adress,this.phone );
   Map<String,dynamic>tomap(){
-    return{'id':id,'name':name,'phone':phone,'adress':adress,'image':image};
+    return{'name':name,'email':email,'adress':adress,'phone':phone};
   }
 
   UserData.fromMap(Map<String,dynamic>map){
 
     name=map['name'];
-    phone=map['phone'];
+    email=map['email'];
     adress=map['adress'];
+    phone=map['phone'];
+
 
   }
 
+  UserData.phoneNumberFromMap(Map<String,dynamic>map){
+
+
+    phone=map['phone'];
+
+  }
 
 }

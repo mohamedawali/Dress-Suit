@@ -1,49 +1,53 @@
 import 'package:bloc/bloc.dart';
-import 'package:dress_suit/repository/repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meta/meta.dart';
+import 'package:dress_suit/web_services/auth_service.dart';
 
-import '../../connection/signUp.dart';
-import '../../connection/user.dart';
-import '../../model/user_data.dart';
+
+import '../../repository/auth_repository.dart';
 
 part 'sign_state.dart';
 
 class SignCubit extends Cubit<SignState> {
   SignCubit() : super(SignInitial());
-  SignFire _signFire = SignFire();
-  Repository repo = Repository();
-  Users _users = Users();
 
-  void signUp(String email, String pass) async {
-    await repo.signUp(email, pass).then((value) => print('Success Register'));
-    // emit(IsSignedUp());
+  AuthRepository _authRepository = AuthRepository();
+  AuthService _authService=AuthService();
+
+  var signIn_result, signUp_result;
+
+  signUp(String email, String pass) async {
+   await  _authRepository.signUp(email, pass)
+
+     .then((value) {
+      signUp_result = value;
+    });
+    return signUp_result;
   }
 
-  void signIn(String email, String pass) async {
-    //  emit(IsSignedUp());
-    _signFire.signIn(email, pass).then((value) => print('Success Login'));
-  }
+  signIn(String email, String pass)  async{
+  await   _authRepository.signIn(email, pass).then((value) {
 
+      signIn_result = value;
+         });
+    return signIn_result;
+
+
+  }
   void logOut() {
-    _signFire.logOut();
-    // FirebaseAuth.instance.signOut();
-    //print('LogOut');
+   _authService .logOut();
   }
 
-  Future viewUserData() async {
-    return await repo.viewUserData().then((data) => emit(getDataUser(data)));
-  }
-//   void getEmail() {
-// //     repo.getEmail().then((email) {
-// //       emit(Loademail(email));
-// //     });
-// //  }
 
-//  String getCurrentUser()  {
-// return _signFire.getCurrentUser();
-//
-//
-//   }
-//
+
+  // void getCurrentEmail() {
+  //   repo.getCurrentEmail().then((email) => emit(getCurrentemail(email)));
+  // }
+
+
+  getCurrentUserId() {
+    return _authRepository.getCurrentUserId();
+  }
+
+  void resetPassword(String email) {
+    _authRepository.resetPassword(email);
+  }
 }

@@ -2,7 +2,7 @@
     package="com.example.dress_suit">
 
    <application
-        android:label="dress_suit"
+        android:label="فستان وبدلة"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,6 +1,6 @@
 part of 'sign_cubit.dart';
 
-@immutable
+
 abstract class SignState {}
 
 class SignInitial extends SignState {
@@ -21,11 +21,34 @@ class SignInitial extends SignState {
 //
 // }
 
-class getDataUser extends SignState{
-  UserData? userData;
-  getDataUser(this.userData);
-
-
-
-
-}
+// class getDataUser extends SignState{
+//   UserData? userData;
+//   getDataUser(this.userData);
+//
+//
+//
+//
+// }
+// class getCurrentemail extends SignState{
+// var email;
+// getCurrentemail(this.email);
+//
+//
+//
+//
+// }
+// class Isload extends SignState{
+//   var value;
+//   Isload(this.value);
+//
+//
+//
+//
+// }
+// class GetCurrentUserId extends SignState {
+//
+//   var uid;
+//
+//   GetCurrentUserId(this.uid);
+//
+// }
