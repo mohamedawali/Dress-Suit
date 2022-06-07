@@ -12,7 +12,6 @@ String? phone;
   ProductData(this.product_id, this.user_id, this.name, this.color, this.size,
       this.price, this.type, this.image, this.date,this.phone);
 
-  //ProductData( this.name, this.type, this.color, this.size);
   Map<String, dynamic> productToMap() {
     return {
       'product_id': product_id,
@@ -26,7 +25,6 @@ String? phone;
       'date': date,
       'phone':phone
     };
-    // return {'name':name,'type':type,'color':color,'size':size,'image':image};
   }
 
   ProductData.productFromMap(Map<String, dynamic> map) {

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dress_suit/repository/product_repository.dart';
-import 'package:dress_suit/repository/repository.dart';
 import 'package:meta/meta.dart';
 
 import '../../model/user_product.dart';

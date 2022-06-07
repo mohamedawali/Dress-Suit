@@ -23,7 +23,6 @@ import '../View/signin.dart';
 import '../View/signup.dart';
 
 import '../cubit/sign_cubit/sign_cubit.dart';
-import '../repository/repository.dart';
 
 
 class AppNavigate {

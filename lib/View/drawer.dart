@@ -1,20 +1,12 @@
 import 'package:dress_suit/cubit/sign_cubit/sign_cubit.dart';
 import 'package:dress_suit/cubit/user_cubit/user_cubit.dart';
 import 'package:dress_suit/model/user_data.dart';
-import 'package:email_validator/email_validator.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// class Drawer_Profil extends StatelessWidget {
-//  // UserData userData;
-//    Drawer_Profil( {Key? key}) : super(key: key);
-//   var bloc;
-//   // UserData userData;
-//
-//
-//
+
 class Drawer_Profil extends StatefulWidget {
   const Drawer_Profil({Key? key}) : super(key: key);
 
@@ -100,9 +92,7 @@ var bloc;
               ],
             ),
           ),
-          // SizedBox(
-          //   height: 20,
-          // ),
+
           Divider(color: Colors.lightBlue,height: 20,indent: 10,endIndent: 10,),
           Padding(
             padding: const EdgeInsets.only(right: 10),

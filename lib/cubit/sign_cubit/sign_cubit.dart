@@ -38,9 +38,6 @@ class SignCubit extends Cubit<SignState> {
 
 
 
-  // void getCurrentEmail() {
-  //   repo.getCurrentEmail().then((email) => emit(getCurrentemail(email)));
-  // }
 
 
   getCurrentUserId() {

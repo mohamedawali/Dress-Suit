@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 
 
-import 'package:dress_suit/repository/repository.dart';
 import 'package:dress_suit/repository/user_repository.dart';
 
 import 'package:meta/meta.dart';
@@ -17,7 +16,6 @@ class UserCubit extends Cubit<UserState> {
 
   UserCubit() : super(UserInitial());
 
-  Repository repository = Repository();
   UserRepository _userRepository = UserRepository();
   List<ProductData>count_product = [];
   List<ProductData>count_SuitProduct = [];

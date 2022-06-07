@@ -6,7 +6,7 @@ import '../model/user_product.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class ViewProduct extends StatelessWidget {
-  //List<ProductData> allproduct ;
+
   ProductData allproduct;
   ViewProduct({Key? key, required this.allproduct}) : super(key: key);
 
@@ -49,7 +49,6 @@ class ViewProduct extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: allproduct.name,
-                            //'فسان سواريه لجميع المناسبات لون احمر قط ستانااااااااااااتانلنالتلاتن ',
                             style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.lightBlue,
@@ -58,7 +57,6 @@ class ViewProduct extends StatelessWidget {
                         ]),
                   ),
 
-                  // SizedBox(height: 5,),
                   Divider(
                     height: 20,
                     thickness: 3,
@@ -112,7 +110,6 @@ class ViewProduct extends StatelessWidget {
                     thickness: 3,
                     color: Colors.lightBlue,
                     indent: 325,
-                   // endIndent: 300,
                   ),
                   RichText(
                     textDirection: TextDirection.rtl,
@@ -130,7 +127,6 @@ class ViewProduct extends StatelessWidget {
                               TextStyle(fontSize: 17, color: Colors.lightBlue,fontFamily: 'en'))
                     ]),
                   ),
-                  //Row(mainAxisAlignment:MainAxisAlignment.start,textDirection: TextDirection.rtl,children:[ Text(': اللون',style: TextStyle(fontSize: 20),),SizedBox(width: 5,),Text('احمر',style: TextStyle(fontSize: 16))]),
                   Divider(
                     height: 20,
                     thickness: 3,

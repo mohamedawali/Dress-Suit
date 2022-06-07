@@ -16,7 +16,6 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _pass1 = TextEditingController();
   TextEditingController _pass2 = TextEditingController();
 
-  // AuthController _controller = Get.put(AuthController());
   GlobalKey<FormState> _signUpgGlobalKey = GlobalKey<FormState>();
   var bloc;
   bool isvisable1 = true;

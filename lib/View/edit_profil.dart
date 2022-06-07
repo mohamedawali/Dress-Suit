@@ -3,29 +3,6 @@ import 'package:dress_suit/model/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// class Edit_Profil extends StatefulWidget {
-//   UserData? z;
-//    Edit_Profil({Key? key, this.z}) : super(key: key);
-//
-//   @override
-//   State<Edit_Profil> createState() => _Edit_ProfilState();
-// }
-//
-// class _Edit_ProfilState extends State<Edit_Profil> {
-//   TextEditingController _nameController=TextEditingController();
-//   TextEditingController _emailController=TextEditingController();
-//   TextEditingController _adressController=TextEditingController();
-//   TextEditingController _phoneController=TextEditingController();
-//
-//   @override
-//   void initState() {
-//   //BlocProvider.of<UserCubit>(context);
-//       //.viewUserData();
-//
-//   //print(e.z!.name);
-//
-//     super.initState();
-//   }
 class Edit_Profil extends StatelessWidget {
   UserData userData;
   Edit_Profil({Key? key,required this.userData}) : super(key: key);

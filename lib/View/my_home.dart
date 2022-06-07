@@ -1,5 +1,6 @@
 import 'package:dress_suit/cubit/product_cubit/product_cubit.dart';
 import 'package:dress_suit/model/user_product.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -106,12 +107,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       children: [
                         Container(
                          height: 200,child: allDressProduct[index].image!.isNotEmpty ?
-                        FadeInImage.assetNetwork(placeholder: 'assets/loading/loading.gif', image: allDressProduct[index].image![0]): Image.asset('assets/logo/d2.png')
-                          // decoration: BoxDecoration(
-                          //     image: DecorationImage(
-                          //         image: NetworkImage(allDressProduct[index].image!.isEmpty
-                          //             ? ''
-                          //             : allDressProduct[index].image![0]))),
+                        FadeInImage.assetNetwork(placeholder: 'assets/loading/loading.gif', image: allDressProduct[index].image![0]): Image.asset('assets/imageNotFound/no-image.png')
                         ),
                         SizedBox(height: 10),
                         Text(
@@ -169,12 +165,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       children: [
                         Container(
                           height: 200,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      allSuitProduct[index].image!.isEmpty
-                                          ? ''
-                                          : allSuitProduct[index].image![0]))),
+
+
+                                        child:  allSuitProduct[index].image!.isNotEmpty  ? FadeInImage.assetNetwork(placeholder: 'assets/loading/loading.gif', image: allSuitProduct[index].image![0]):Image.asset('assets/imageNotFound/no-image.png',
+                                           ),
                         ),
                         SizedBox(height:10),
                         Text(

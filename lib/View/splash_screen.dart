@@ -23,9 +23,8 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
 
-// print(currentUserId);
+
     _streamSubscription = Connectivity().onConnectivityChanged.listen((result) {
-      //showDialog(context: context, builder: (context)=>const Center(child:CircularProgressIndicator()));
       setState(() {
         _connectivityResult = result;
 
@@ -51,7 +50,7 @@ class _SplashState extends State<Splash> {
     );
   }
 
-  v() async {
+  splash() async {
     await Future.delayed(const Duration(seconds: 5));
 var currentUserId = BlocProvider.of<SignCubit>(context).getCurrentUserId();
    if (currentUserId !=null){
@@ -68,7 +67,7 @@ var currentUserId = BlocProvider.of<SignCubit>(context).getCurrentUserId();
 
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      v();
+      splash();
     } else {
       showDialog(
           context: context,
