@@ -7,7 +7,7 @@ class ProductInitial extends ProductState {}
 
 
 class GetSuitProduct extends ProductState{
-  List< ProductData> suitProductData;
+ final List< ProductData> suitProductData;
   GetSuitProduct(this.suitProductData);
 
 
@@ -15,20 +15,42 @@ class GetSuitProduct extends ProductState{
 
 }
 class GetDressProduct extends ProductState {
-  List<ProductData> dressProductData;
+ final List<ProductData> dressProductData;
 
   GetDressProduct(this.dressProductData);
 
 
 }
-class GetUserProduct extends ProductState{
-  List< ProductData> userProduct;
+class GetChangeItem extends ProductState {
+ final String text;
+
+  GetChangeItem(this.text);
+
+
+}
+class GetChangeIndex extends ProductState {
+ final int index;
+
+ GetChangeIndex(this.index);
+
+
+}
+  class GetUserProduct extends ProductState{
+ final List< ProductData> userProduct;
   GetUserProduct(this.userProduct);
 
 
+}
+class SaveProductState extends ProductState{
+
+ SaveProductState();
 
 
+}
+class SelectImageState extends ProductState{
+ File? image1;
+ File? image2;
+ File? image3;
 
-
-
+ SelectImageState(this.image1, this.image2, this.image3);
 }

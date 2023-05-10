@@ -15,14 +15,13 @@ class MyProduct extends StatefulWidget {
 
 class _MyProductState extends State<MyProduct> {
   List<ProductData> allUserProduct = [];
-  List<String> image_url = [];
+  List<String> imageUrl = [];
 
   var bloc;
 
   @override
   void initState() {
-    bloc = BlocProvider.of<ProductCubit>(context);
-    bloc.viewUserProduct();
+    bloc = BlocProvider.of<ProductCubit>(context);bloc.viewUserProduct();
 
     super.initState();
   }
@@ -32,9 +31,9 @@ class _MyProductState extends State<MyProduct> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('منتجاتي'),
+          title: const Text('منتجاتي'),
           centerTitle: true,
-          titleTextStyle: TextStyle(fontSize: 20, fontFamily: 'ar'),
+          titleTextStyle: const TextStyle(fontSize: 20, fontFamily: 'ar'),
         ),
         body: Container(
             color: Colors.grey[200],
@@ -42,14 +41,15 @@ class _MyProductState extends State<MyProduct> {
                 padding: const EdgeInsets.only(top: 5, right: 5, left: 5),
                 child: BlocBuilder<ProductCubit, ProductState>(
                     builder: (context, state) {
-                  if (state is GetUserProduct)
+                  if (state is GetUserProduct) {
                     allUserProduct = state.userProduct;
+                  }
 
                   return GridView.builder(
                     shrinkWrap: true,
-                    physics: PageScrollPhysics(),
+                    physics: const PageScrollPhysics(),
                     itemCount: allUserProduct.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         childAspectRatio: 2 / 3.3,
                         crossAxisSpacing: 1,
@@ -76,12 +76,12 @@ class _MyProductState extends State<MyProduct> {
                         ? ''
                         : allUserProduct[index].image![0]))),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             allUserProduct[index].name!,
             maxLines: 2,
             textDirection: TextDirection.rtl,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 12,
                 fontFamily: 'ar',
                 height: 1,
@@ -90,20 +90,18 @@ class _MyProductState extends State<MyProduct> {
           ElevatedButton(
             onPressed: () {
               for (int i = 0; i < allUserProduct[index].image!.length; i++) {
-                image_url.add(allUserProduct[index].image![i].toString());
+                imageUrl.add(allUserProduct[index].image![i].toString());
               }
 
-              bloc.deletImage(image_url);
-              bloc.deletItem(allUserProduct[index].product_id);
-              setState(() {
-                allUserProduct.removeAt(index);
-              });
+              bloc.deleteImage(imageUrl);
+              bloc.deleteItem(index,allUserProduct[index].product_id);
+
             },
-            child: Text(
+            child: const Text(
               'حذف',
               style: TextStyle(color: Colors.white, fontFamily: 'ar'),
             ),
-            style: ElevatedButton.styleFrom(minimumSize: Size(100, 30)),
+            style: ElevatedButton.styleFrom(minimumSize: const Size(100, 30)),
           ),
           Text(allUserProduct[index].date!)
         ],

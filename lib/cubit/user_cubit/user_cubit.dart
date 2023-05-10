@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 
@@ -13,10 +12,10 @@ import '../../model/user_product.dart';
 part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
+  final UserRepository _userRepository ;
+  UserCubit(this._userRepository) : super(UserInitial());
 
-  UserCubit() : super(UserInitial());
 
-  UserRepository _userRepository = UserRepository();
   List<ProductData>count_product = [];
   List<ProductData>count_SuitProduct = [];
   List<ProductData>count_userProduct = [];

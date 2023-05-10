@@ -1,4 +1,3 @@
-import 'package:dress_suit/View/add_product.dart';
 import 'package:dress_suit/cubit/sign_cubit/sign_cubit.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,8 +12,8 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
-TextEditingController _email=TextEditingController();
-GlobalKey<FormState> _globalKey=GlobalKey<FormState>();
+final TextEditingController _email=TextEditingController();
+final GlobalKey<FormState> _globalKey=GlobalKey<FormState>();
 var bloc;
 @override
   void initState() {
@@ -30,7 +29,7 @@ bloc= BlocProvider.of<SignCubit>(context);
           child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
          child: Center(
-           child: Container(decoration:BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(8),boxShadow: [
+           child: Container(decoration:BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(8),boxShadow: const [
        BoxShadow(
       offset: Offset(0, 0),
         blurRadius: 1,
@@ -48,13 +47,13 @@ bloc= BlocProvider.of<SignCubit>(context);
               children: [
                       TextFormField(controller: _email,
                         validator: (value)=>EmailValidator.validate(value!)?null:'ادخل اابريد الالكتروني بشكل صحيح(example@gmail.com)',
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             hintText: 'ادخل البريد الالكتروني لاسترجاع كلمة السر ',
-                            hintStyle: TextStyle(fontSize: 12,fontFamily: 'ar'),
+                            hintStyle: const TextStyle(fontSize: 12,fontFamily: 'ar'),
                             hintTextDirection: TextDirection.rtl,
                             border: OutlineInputBorder()),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       ElevatedButton(onPressed: ()  async {
@@ -62,13 +61,13 @@ bloc= BlocProvider.of<SignCubit>(context);
               if(_globalKey.currentState!.validate()){
 
                     bloc.   resetPassword(_email.value.text);
-                    showDialog(context: context, builder: (context)=>AlertDialog(content: Text(' تم ارسال رابط تغير كلمة السر الي البريد الالكتروني ${_email.value.text}',style: TextStyle(fontFamily: 'ar'),textDirection: TextDirection.rtl,),));
-                    await Future.delayed(Duration(seconds: 1));
+                    showDialog(context: context, builder: (context)=>AlertDialog(content: Text(' تم ارسال رابط تغير كلمة السر الي البريد الالكتروني ${_email.value.text}',style: const TextStyle(fontFamily: 'ar'),textDirection: TextDirection.rtl,),));
+                    await Future.delayed(const Duration(seconds: 1));
                     Navigator.pushNamedAndRemoveUntil(context, '/signin',(Route r)=>false);
               }else{
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('ادخل البريد الالكتروني لاسترجاع كلمة السر',style: TextStyle(fontFamily: 'ar',fontSize: 18),textDirection: TextDirection.rtl,),backgroundColor: Colors.lightBlue,duration: Duration(seconds: 1),));
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: const Text('ادخل البريد الالكتروني لاسترجاع كلمة السر',style: TextStyle(fontFamily: 'ar',fontSize: 18),textDirection: TextDirection.rtl,),backgroundColor: Colors.lightBlue,duration: Duration(seconds: 1),));
               }
-                      }, child: Text('استرجاع كلمة السر',style: TextStyle(fontSize: 16,fontFamily: 'ar',color: Colors.white),))
+                      }, child: const Text('استرجاع كلمة السر',style: const TextStyle(fontSize: 16,fontFamily: 'ar',color: Colors.white),))
               ],
             ),
                     ),

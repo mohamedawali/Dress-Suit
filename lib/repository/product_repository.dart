@@ -8,70 +8,71 @@ import '../model/getDate.dart';
 import '../model/user_data.dart';
 
 class ProductRepository{
-  ProductService _productService=ProductService();
-  UsersService _usersService=UsersService();
-  GetDate getDate = GetDate();
-  List<String> url_image = [];
+  final ProductService _productService;
+  final UsersService _usersService;
 
-  void saveProduct(String name, String color, String size, String price, String type) async {
-  //  print('uriss${l}');
-   // var uid = FirebaseAuth.instance.currentUser!.uid;
+  ProductRepository(this._productService, this._usersService);
+
+  GetDate getDate = GetDate();
+  List<String> urlImage = [];
+
+   saveProduct(String name, String color, String size, String price, String type) async {
+
     var data = await _usersService.viewUserData();
 
     var phone = UserData.fromMap(data!).phone;
 
 
  ProductData   productData = ProductData('', '', name, color, size, price, type,
-        url_image.toList(), getDate.getDate(), phone);
+        urlImage.toList(), getDate.getDate(), phone);
 
     _productService.saveProduct(productData);
-    url_image.clear();
+    urlImage.clear();
 
   }
 
   //
   Future<List<ProductData>> viewDressProduct() async {
-    final listDress = await _productService.viewDressProduct();
-    var list_Dress = listDress
+    final dressList = await _productService.viewDressProduct();
+    var listDress = dressList
         .map((value) => ProductData.productFromMap(value.data()))
         .toList();
 
-    return list_Dress;
+    return listDress;
   }
 
   Future<List<ProductData>> viewSuitProduct() async {
-    final listSuit = await _productService.viewSuitProduct();
-    var list_Suit = listSuit
+    final suitList = await _productService.viewSuitProduct();
+    var listSuit = suitList
         .map((value) => ProductData.productFromMap(value.data()))
         .toList();
 
-    return list_Suit;
+    return listSuit;
   }
 
   Future<List<ProductData>> viewUserProduct() async {
     final docs = await _productService.viewUserProduct();
-//   var v= (Map<String, dynamic>.from((listUserProduct) as dynamic));
-    var list_UserProduct = docs
+    var listUserProduct = docs
         .map((value) => ProductData.productUserFromMap(value.data()))
         .toList();
-    return list_UserProduct;
+    return listUserProduct;
   }
 
-  void deletItem(String product_id) {
-    _productService.deletItem(product_id);
+  Future deleteItem(String productId)async {
+  await  _productService.deleteItem(productId);
   }
-  void deletImage(List<String> image_url) {
-    _productService.deletImage(image_url);
+  void deleteImage(List<String> imageUrl) {
+    _productService.deleteImage(imageUrl);
 
   }
   Future<List<String>> uploadProductImage(List<File> images) async {
-    images.forEach((image) async {
+    images.map((image) async {
       var url = await _productService.uploadProductImage(image);
-      url_image.add(url);
+      urlImage.add(url);
 
     });
 
-    return url_image;
-   ;
+    return urlImage;
+
   }
 }

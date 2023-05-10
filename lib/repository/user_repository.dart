@@ -1,10 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dress_suit/web_services/user_service.dart';
 
 import '../model/user_data.dart';
 
 class UserRepository{
-  UsersService _usersService=UsersService();
+  final UsersService _usersService;
+
+  UserRepository(this._usersService);
+
   UserData? userData;
   void saveUserData(String name, String phone, String adress) async {
     var email = _usersService.getCurrentUserEmail();
@@ -15,9 +17,9 @@ class UserRepository{
   }
   Future<UserData> viewUserData() async {
 
-      var user_data = await _usersService.viewUserData();
+      var userData = await _usersService.viewUserData();
 
-  return  UserData.fromMap(user_data! );
+  return  UserData.fromMap(userData! );
 }
 
   void updateUserData(String name, String email, String adress, String phone) {

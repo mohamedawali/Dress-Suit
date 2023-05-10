@@ -1,14 +1,12 @@
 import 'package:carousel_nullsafety/carousel_nullsafety.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../model/user_product.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class ViewProduct extends StatelessWidget {
 
-  ProductData allproduct;
-  ViewProduct({Key? key, required this.allproduct}) : super(key: key);
+  final ProductData allProduct;
+ const ViewProduct( {Key? key, required this. allProduct, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +28,11 @@ class ViewProduct extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       child: Carousel(
                         images: [
-                          for (int x = 0; x < allproduct.image!.length; x++)
-                            NetworkImage(allproduct.image![x]),
+                          for (int x = 0; x < allProduct.image!.length; x++)
+                            NetworkImage(allProduct.image![x]),
                         ],
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
 
@@ -42,14 +40,14 @@ class ViewProduct extends StatelessWidget {
                     textDirection: TextDirection.rtl,
                     maxLines: 2,
                     text: TextSpan(
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'ar',
                           color: Colors.lightBlue,
                         ),
                         children: [
                           TextSpan(
-                            text: allproduct.name,
-                            style: TextStyle(
+                            text: allProduct.name,
+                            style: const TextStyle(
                                 fontSize: 15,
                                 color: Colors.lightBlue,
                                 fontWeight: FontWeight.bold),
@@ -57,17 +55,17 @@ class ViewProduct extends StatelessWidget {
                         ]),
                   ),
 
-                  Divider(
+                  const Divider(
                     height: 20,
                     thickness: 3,
                   ),
                   RichText(
                     textDirection: TextDirection.rtl,
-                    text: TextSpan(style: TextStyle(
+                    text: TextSpan(style: const TextStyle(
                       fontFamily: 'ar',
 
                     ),children: [
-                      TextSpan(
+                      const TextSpan(
                         text: 'اللون :  ',
                         style: TextStyle(
                             fontSize: 15,
@@ -76,12 +74,12 @@ class ViewProduct extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                          text: allproduct.color,
+                          text: allProduct.color,
                           style:
-                              TextStyle(fontSize: 17, color: Colors.lightBlue))
+                              const TextStyle(fontSize: 17, color: Colors.lightBlue))
                     ]),
                   ),
-                  Divider(
+                  const Divider(
                     height: 20,
                     thickness: 3,
                     indent: 340,
@@ -92,7 +90,7 @@ class ViewProduct extends StatelessWidget {
                     text: TextSpan(
 
                     children: [
-                      TextSpan(
+                      const TextSpan(
                         text: 'المقاس :  ',
                         style: TextStyle(fontFamily: 'ar',
                             fontSize: 15,
@@ -100,12 +98,12 @@ class ViewProduct extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
-                          text: allproduct.size,
+                          text: allProduct.size,
                           style:
-                              TextStyle(fontSize: 17, color: Colors.lightBlue,fontFamily: 'en'))
+                              const TextStyle(fontSize: 17, color: Colors.lightBlue,fontFamily: 'en'))
                     ]),
                   ),
-                  Divider(
+                  const Divider(
                     height: 20,
                     thickness: 3,
                     color: Colors.lightBlue,
@@ -114,7 +112,7 @@ class ViewProduct extends StatelessWidget {
                   RichText(
                     textDirection: TextDirection.rtl,
                     text: TextSpan(children: [
-                      TextSpan(
+                      const TextSpan(
                         text: 'سعرالايجار في الليلة الواحدة :  ',
                         style: TextStyle(fontFamily: 'ar',
                             fontSize: 15,
@@ -122,12 +120,12 @@ class ViewProduct extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
-                          text: allproduct.price,
+                          text: allProduct.price,
                           style:
-                              TextStyle(fontSize: 17, color: Colors.lightBlue,fontFamily: 'en'))
+                              const TextStyle(fontSize: 17, color: Colors.lightBlue,fontFamily: 'en'))
                     ]),
                   ),
-                  Divider(
+                  const Divider(
                     height: 20,
                     thickness: 3,
                     color: Colors.lightBlue,
@@ -137,14 +135,14 @@ class ViewProduct extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                            onPressed: () => call(allproduct.phone),
-                            icon: Icon(
+                            onPressed: () => call(allProduct.phone),
+                            icon: const Icon(
                               Icons.phone_in_talk_outlined,
                               color: Colors.lightBlue,
                             )),
                         RichText(textDirection: TextDirection.rtl,
                           text: TextSpan(children: [
-                            TextSpan(
+                            const TextSpan(
                               text: 'للتواصل :  ',
                               style: TextStyle(fontFamily: 'ar',
                                   fontSize: 15,
@@ -152,13 +150,13 @@ class ViewProduct extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                             ),
                             TextSpan(
-                                text: allproduct.phone,
-                                style: TextStyle(fontFamily: 'en',
+                                text: allProduct.phone,
+                                style: const TextStyle(fontFamily: 'en',
                                     fontSize: 17, color: Colors.lightBlue)),
                           ]),
                         ),
                       ]),
-                  Divider(
+                  const Divider(
                     height: 20,
                     thickness: 3,
                     color: Colors.lightBlue,

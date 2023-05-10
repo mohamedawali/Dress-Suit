@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dress_suit/cubit/sign_cubit/sign_cubit.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,14 +15,13 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-  StreamSubscription<ConnectivityResult>? _streamSubscription;
   ConnectivityResult? _connectivityResult;
 
   @override
   void initState() {
 
 
-    _streamSubscription = Connectivity().onConnectivityChanged.listen((result) {
+   Connectivity().onConnectivityChanged.listen((result) {
       setState(() {
         _connectivityResult = result;
 

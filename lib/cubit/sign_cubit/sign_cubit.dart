@@ -7,10 +7,12 @@ import '../../repository/auth_repository.dart';
 part 'sign_state.dart';
 
 class SignCubit extends Cubit<SignState> {
-  SignCubit() : super(SignInitial());
+  final AuthService _authService;
+  final AuthRepository _authRepository;
+  SignCubit(this._authService,this._authRepository) : super(SignInitial());
 
-  AuthRepository _authRepository = AuthRepository();
-  AuthService _authService=AuthService();
+
+
 
   var signIn_result, signUp_result;
 

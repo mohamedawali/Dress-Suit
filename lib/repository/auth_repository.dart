@@ -1,7 +1,9 @@
 import 'package:dress_suit/web_services/auth_service.dart';
 
 class AuthRepository {
-  AuthService _authService = AuthService();
+  final AuthService _authService;
+
+  AuthRepository(this._authService);
 
   var signUp_userCredential;
   var signIn_userCredential;

@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-class Drawer_Profil extends StatefulWidget {
-  const Drawer_Profil({Key? key}) : super(key: key);
+class DrawerProfile extends StatefulWidget {
+  const DrawerProfile({Key? key}) : super(key: key);
 
   @override
-  State<Drawer_Profil> createState() => _Drawer_ProfilState();
+  State<DrawerProfile> createState() => _DrawerProfileState();
 }
 
-class _Drawer_ProfilState extends State<Drawer_Profil> {
+class _DrawerProfileState extends State<DrawerProfile> {
    UserData? userData;
 
 var bloc;
@@ -56,21 +56,21 @@ var bloc;
                               child: Image.asset('assets/userImage/user.png'),
                               maxRadius: 60,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
 
                             Text(userData?.name ?? 'loading'
                               ,
 
-                              style: TextStyle(fontSize: 22,
+                              style: const TextStyle(fontSize: 22,
                                   fontFamily: 'en',
                                   color: Colors.white),
                             )
                           ]);
                   }   )
     )  ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
@@ -93,7 +93,7 @@ var bloc;
             ),
           ),
 
-          Divider(color: Colors.lightBlue,height: 20,indent: 10,endIndent: 10,),
+          const Divider(color: Colors.lightBlue,height: 20,indent: 10,endIndent: 10,),
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: InkWell(

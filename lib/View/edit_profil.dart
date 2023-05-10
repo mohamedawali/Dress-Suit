@@ -3,14 +3,14 @@ import 'package:dress_suit/model/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Edit_Profil extends StatelessWidget {
+class EditProfile extends StatelessWidget {
   UserData userData;
-  Edit_Profil({Key? key,required this.userData}) : super(key: key);
+  EditProfile({Key? key,required this.userData}) : super(key: key);
   var bloc;
   TextEditingController? _nameController;
 
   TextEditingController? _emailController;
-  TextEditingController? _adressController;
+  TextEditingController? _addressController;
   TextEditingController? _phoneController;
 
   @override
@@ -18,11 +18,11 @@ class Edit_Profil extends StatelessWidget {
     bloc = BlocProvider.of<UserCubit>(context);
     _nameController = TextEditingController(text:userData.name);
     _emailController = TextEditingController(text: userData.email);
-    _adressController = TextEditingController(text: userData.adress);
+    _addressController = TextEditingController(text: userData.adress);
     _phoneController = TextEditingController(text: userData.phone);
 
     return Scaffold(
-        appBar: AppBar(title:  const Text('تعديل البيانات الشخصية'),centerTitle: true,foregroundColor: Colors.white,titleTextStyle: TextStyle(fontFamily: 'ar',fontSize: 20),),
+        appBar: AppBar(title:  const Text('تعديل البيانات الشخصية'),centerTitle: true,foregroundColor: Colors.white,titleTextStyle: const TextStyle(fontFamily: 'ar',fontSize: 20),),
         body:  Container(
             color: Colors.grey[200],
             height: double.infinity,
@@ -32,7 +32,6 @@ class Edit_Profil extends StatelessWidget {
                 right: 20,
               ),
 
-              //key: _globalKey,
               child: Center(
                     child:
                     SingleChildScrollView(
@@ -41,7 +40,7 @@ class Edit_Profil extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               offset: Offset(0, 0),
                               blurRadius: 1,
@@ -59,10 +58,10 @@ class Edit_Profil extends StatelessWidget {
                                 children: [
                                   Directionality(
                                       textDirection: TextDirection.rtl,
-                                      child: TextFormField(style: TextStyle(fontFamily: 'en',fontSize: 20),
+                                      child: TextFormField(style: const TextStyle(fontFamily: 'en',fontSize: 20),
                                           controller: _nameController,
                                           textAlign: TextAlign.left,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             label: Text(
                                               'الاسم',
                                             ),
@@ -73,11 +72,11 @@ class Edit_Profil extends StatelessWidget {
                                   ),
                                   Directionality(
                                       textDirection: TextDirection.rtl,
-                                      child: TextFormField(style: TextStyle(fontFamily: 'en',fontSize: 20),
+                                      child: TextFormField(style: const TextStyle(fontFamily: 'en',fontSize: 20),
                                           readOnly: true,
                                           controller: _emailController,
                                           textAlign: TextAlign.left,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             label: Text(
                                               'البريد الالكتروني',
                                             ),
@@ -88,10 +87,10 @@ class Edit_Profil extends StatelessWidget {
                                   ),
                                   Directionality(
                                       textDirection: TextDirection.rtl,
-                                      child: TextFormField(style: TextStyle(fontFamily: 'en',fontSize: 20),
-                                          controller: _adressController,
+                                      child: TextFormField(style: const TextStyle(fontFamily: 'en',fontSize: 20),
+                                          controller: _addressController,
                                           textAlign: TextAlign.left,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             label: Text(
                                               'العنوان',
                                             ),
@@ -102,10 +101,10 @@ class Edit_Profil extends StatelessWidget {
                                   ),
                                   Directionality(
                                       textDirection: TextDirection.rtl,
-                                      child: TextFormField(style: TextStyle(fontFamily: 'en',fontSize: 20),
+                                      child: TextFormField(style: const TextStyle(fontFamily: 'en',fontSize: 20),
                                           controller: _phoneController,
                                           textAlign: TextAlign.left,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             label: Text(
                                               'رقم الموبايل',
                                             ),
@@ -117,11 +116,11 @@ class Edit_Profil extends StatelessWidget {
                                     onPressed: () => bloc.updateUserData(
                                         _nameController!.value.text,
                                         _emailController!.value.text,
-                                        _adressController!.value.text,
+                                        _addressController!.value.text,
                                         _phoneController!.value.text),
                                     child: const Text('تعديل البيانات ',style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: 'ar',),),
                                     style: ElevatedButton.styleFrom(
-                                        minimumSize: Size(350, 50),
+                                        minimumSize: const Size(350, 50),
                                         ),
                                   )
                                 ],

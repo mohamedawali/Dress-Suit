@@ -1,31 +1,30 @@
 import 'dart:io';
-
 import 'package:dress_suit/cubit/product_cubit/product_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 
-class Add_Producgt extends StatefulWidget {
-  const Add_Producgt({Key? key}) : super(key: key);
+import '../widget/snackBar.dart';
+
+class AddProduct extends StatefulWidget {
+  const AddProduct({Key? key}) : super(key: key);
 
   @override
-  State<Add_Producgt> createState() => _Add_ProducgtState();
+  State<AddProduct> createState() => _AddProductState();
 }
 
-class _Add_ProducgtState extends State<Add_Producgt>
+class _AddProductState extends State<AddProduct>
     with TickerProviderStateMixin {
-  TextEditingController productname = TextEditingController();
-  TextEditingController productcolor = TextEditingController();
-  TextEditingController productsize = TextEditingController();
-  TextEditingController productprice = TextEditingController();
-  GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+  TextEditingController productName = TextEditingController();
+  TextEditingController productColor = TextEditingController();
+  TextEditingController productSize = TextEditingController();
+  TextEditingController productPrice = TextEditingController();
+  GlobalKey<FormState> globalKey = GlobalKey<FormState>();
   AnimationController? animationController;
   var showDialogs;
 
-  List image_list = List<File>.filled(3, File(''));
+  List <File>imageList= [];
   var _type;
-  var bloc;
+  ProductCubit? bloc;
   File? _image1;
   File? _image2;
   File? _image3;
@@ -50,16 +49,38 @@ class _Add_ProducgtState extends State<Add_Producgt>
           child: SingleChildScrollView(
               child: Padding(
         padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
-        child: Form(
-          key: _globalKey,
+        child:        BlocBuilder<ProductCubit, ProductState>(
+          builder: (context, state) {
+            if(state is GetChangeItem){
+              _type=  state.text;
+            }  else if(state is SaveProductState){
+              _image1 = null;
+              _image2 = null;
+              _image3 = null;
+              productName.clear();
+              productColor.clear();
+              productPrice.clear();
+              productSize.clear();
+              imageList.clear();
+            }else if(state is SelectImageState){
+
+              _image1= state.image1;
+
+              _image2= state.image2;
+
+           _image3=state.image3;
+
+            }
+            return Form(
+          key: globalKey,
           child: Column(children: [
             Row(
               children: [
                 Expanded(
                   flex: 1,
                   child: OutlinedButton(
-                    onPressed: () => selectImage(1),
-                    child: displayimage1(),
+                    onPressed: () =>bloc!. selectImage(1),
+                    child: displayImage1(),
                   ),
                 ),
                 Expanded(
@@ -67,8 +88,8 @@ class _Add_ProducgtState extends State<Add_Producgt>
                   child: Padding(
                     padding: const EdgeInsets.only(left: 4),
                     child: OutlinedButton(
-                      onPressed: () => selectImage(2),
-                      child: displayimage2(),
+                      onPressed: () => bloc!.selectImage(2),
+                      child: displayImage2(),
                     ),
                   ),
                 ),
@@ -77,8 +98,8 @@ class _Add_ProducgtState extends State<Add_Producgt>
                     child: Padding(
                       padding: const EdgeInsets.only(left: 4),
                       child: OutlinedButton(
-                        onPressed: () => selectImage(3),
-                        child: displayimage3(),
+                        onPressed: () => bloc!.selectImage(3),
+                        child: displayImage3(),
                       ),
                     ))
               ],
@@ -86,7 +107,6 @@ class _Add_ProducgtState extends State<Add_Producgt>
             const SizedBox(
               height: 30,
             ),
-            // CircularProgressIndicator(value: animationController!.value,),
             const SizedBox(
               height: 30,
             ),
@@ -98,14 +118,15 @@ class _Add_ProducgtState extends State<Add_Producgt>
                 fontFamily: 'ar',
               ),
             ),
-            DropdownButtonFormField<String>(
-                style: TextStyle(fontFamily: 'ar', color: Colors.black),
+     DropdownButtonFormField<String>(
+                style: const TextStyle(fontFamily: 'ar', color: Colors.black),
                 elevation: 20,
-                hint: Text(
+                hint: const Text(
                   'اختر النوع',
                   textAlign: TextAlign.end,
                 ),
-                items: [
+                items:
+                const [
                   DropdownMenuItem(
                     alignment: AlignmentDirectional.centerEnd,
                     child: Text('بدلة'),
@@ -121,50 +142,47 @@ class _Add_ProducgtState extends State<Add_Producgt>
                 validator: (type_value) =>
                     type_value == null ? 'اختار نوع المنتج' : null,
                 onChanged: (value) {
-                  setState(() {
-                    _type = value;
-
-                    print(_type);
-                  });
-                }),
+                  bloc!.changeItem(value!);
+                }
+),
             TextFormField(
-                style: TextStyle(fontFamily: 'ar'),
+                style: const TextStyle(fontFamily: 'ar'),
                 validator: (value) =>
                     value!.isEmpty ? 'ادخل مواصفات المنتج' : null,
                 keyboardType: TextInputType.text,
                 textDirection: TextDirection.rtl,
-                controller: productname,
+                controller: productName,
                 decoration: const InputDecoration(
                     hintText: 'وصف البدله/الفستان',
                     hintTextDirection: TextDirection.rtl),
                 maxLines: 2),
             TextFormField(
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'ar',
               ),
               validator: (value) => value!.isEmpty ? 'ادخل لون المنتج' : null,
               textDirection: TextDirection.rtl,
-              controller: productcolor,
+              controller: productColor,
               decoration: const InputDecoration(
                   hintText: 'ادخل اللون', hintTextDirection: TextDirection.rtl),
             ),
             TextFormField(
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'ar',
               ),
               validator: (value) => value!.isEmpty ? 'ادخل مقاس المنتج' : null,
               textDirection: TextDirection.rtl,
-              controller: productsize,
+              controller: productSize,
               decoration: const InputDecoration(
                   hintText: 'ادخل المقاس',
                   hintTextDirection: TextDirection.rtl),
             ),
             TextFormField(
-              style: TextStyle(fontFamily: 'ar'),
+              style: const TextStyle(fontFamily: 'ar'),
               validator: (value) =>
                   value!.isEmpty ? 'ادخل سعر الايجار لليلة الواحدة' : null,
               textDirection: TextDirection.rtl,
-              controller: productprice,
+              controller: productPrice,
               decoration: const InputDecoration(
                   hintText: 'ادخل سعر الايجار لليلة الواحدة',
                   hintTextDirection: TextDirection.rtl),
@@ -176,15 +194,15 @@ class _Add_ProducgtState extends State<Add_Producgt>
                 onPressed: () async {
                   // bloc.uploadProductImage(image_list);
 
-                  if (image_list.length == 3) {
+                  if (imageList.length == 3) {
                     saveProducts(40);
-                  } else if (image_list.length == 2) {
+                  } else if (imageList.length == 2) {
                     saveProducts(30);
-                  } else if (image_list.length == 1) {
+                  } else if (imageList.length == 1) {
                     saveProducts(20);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                           backgroundColor: Colors.blue,
                           content: Text(
                             'لايوجد صور !',
@@ -204,23 +222,25 @@ class _Add_ProducgtState extends State<Add_Producgt>
                   minimumSize: const Size(400, 40),
                 ))
           ]),
-        ),
+        );
+  },
+),
       ))),
     );
   }
 
-  Widget displayimage1() {
+  Widget displayImage1() {
     if (_image1 == null) {
       return Container(
         child: Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 10),
           child: Column(
-            children: [
-              const Icon(
+            children: const [
+              Icon(
                 Icons.add,
                 color: Colors.grey,
               ),
-              const Text('اضافة صورة',
+              Text('اضافة صورة',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontFamily: 'ar'))
             ],
@@ -237,18 +257,18 @@ class _Add_ProducgtState extends State<Add_Producgt>
     }
   }
 
-  displayimage2() {
+  displayImage2() {
     if (_image2 == null) {
       return Container(
         child: Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 10),
           child: Column(
-            children: [
-              const Icon(
+            children: const [
+              Icon(
                 Icons.add,
                 color: Colors.grey,
               ),
-              const Text('اضافة صورة',
+              Text('اضافة صورة',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontFamily: 'ar'))
             ],
@@ -265,18 +285,18 @@ class _Add_ProducgtState extends State<Add_Producgt>
     }
   }
 
-  displayimage3() {
+  displayImage3() {
     if (_image3 == null) {
       return Container(
         child: Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 10),
           child: Column(
-            children: [
-              const Icon(
+            children: const [
+              Icon(
                 Icons.add,
                 color: Colors.grey,
               ),
-              const Text(
+              Text(
                 'اضافة صورة',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontFamily: 'ar'),
@@ -295,74 +315,19 @@ class _Add_ProducgtState extends State<Add_Producgt>
     }
   }
 
-  selectImage(int number) async {
-    var pickImage =
-        await ImagePicker.platform.pickImage(source: ImageSource.gallery);
-    switch (number) {
-      case 1:
-        setState(() {
-          _image1 = File(pickImage!.path);
-          image_list[0] = _image1!;
-        });
-        break;
-      case 2:
-        setState(() {
-          _image2 = File(pickImage!.path);
-          image_list[1] = _image2!;
-        });
-        break;
-      case 3:
-        setState(() {
-          _image3 = File(pickImage!.path);
-          //     image_list.add(_image3!);
-          image_list[2] = _image3!;
-        });
-    }
-  }
 
-  double ch() {
-    return 0;
-  }
 
-  snackBar(int time) {
-    return ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-          backgroundColor: Colors.lightBlue,
-          content: Row(
-            children: [
-              CircularProgressIndicator(
-                color: Colors.white,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 150),
-                child: Text(
-                  'جاري التحميل',
-                  style: TextStyle(fontSize: 20, fontFamily: 'ar'),
-                ),
-              ),
-            ],
-          ),
-          duration: Duration(seconds: time)),
-    );
-  }
+
+
 
   saveProducts(int time) async {
-    if (_globalKey.currentState!.validate()) {
-      bloc.uploadProductImage(image_list);
-      snackBar(time);
+    if (globalKey.currentState!.validate()) {
+      bloc!.uploadProductImage(imageList);
+      snackBar(time,context);
       await Future.delayed(Duration(seconds: time));
-      bloc.saveProduct(productname.value.text, productcolor.value.text,
-          productsize.value.text, productprice.value.text, _type);
-      setState(() {
-        _image1 = null;
-        _image2 = null;
-        _image3 = null;
-        productname.clear();
-        productcolor.clear();
-        productprice.clear();
-        productsize.clear();
-        image_list.clear();
-      });
+      bloc!.saveProduct(productName.value.text, productColor.value.text,
+          productSize.value.text, productPrice.value.text, _type);
+
     }
   }
 }
