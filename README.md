@@ -1,16 +1,39 @@
 # dress_suit
 
-A new Flutter project.
+- This app help peopls to rent suits and dress they don't need by upload suit or dress on app to  show it  to others.
+- Used Flutter Bloc and Firebase.
 
-## Getting Started
+## Screens
+- Splash Screen
 
-This project is a starting point for a Flutter application.
+![Untitled5](https://user-images.githubusercontent.com/103155342/193456738-19c16aba-f4ac-4a89-9100-fb5874b72d38.png)
+ 
+ - Login Screen
+ 
+ ![Untitled6](https://user-images.githubusercontent.com/103155342/193456741-11f21644-d1f1-48fa-9e52-f8f8d92f2e3b.png)
 
-A few resources to get you started if this is your first Flutter project:
+- Register Screen
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![Untitled7](https://user-images.githubusercontent.com/103155342/193456746-5fad5c7c-de52-4a36-90d4-f3d5a4785b2b.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- MainHome Screen
+
+![Untitled8](https://user-images.githubusercontent.com/103155342/193456940-3a017830-1b64-4077-931d-8994da3e28eb.png)
+
+- Details Screen
+
+![Untitled12](https://user-images.githubusercontent.com/103155342/193456921-08147a12-7f26-4f33-bd33-2378ceed3b15.png)
+
+- Add Product Screen
+
+![Untitled9](https://user-images.githubusercontent.com/103155342/193456995-648125a9-dfc6-428c-976a-9b859b39ea33.png)
+
+- Drawer  Screen
+
+![Untitled10](https://user-images.githubusercontent.com/103155342/193457069-1079cbd9-c5df-4bfb-99c4-c51e76bd45a9.png)
+
+- Profile Screen
+
+![Untitled11](https://user-images.githubusercontent.com/103155342/193457147-1fd29ee2-131f-4f0b-bd97-d284025296d9.png)
+
+
